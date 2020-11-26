@@ -7,12 +7,8 @@ const useAuthState = createPersistedState("auth");
 
 const authApi = {
   isAuthenticated: false,
-  async signupApi(body) {
-    const data = await DataApi.post("auth/signup", body);
-    return data?.data;
-  },
-  async signinApi(body) {
-    const data = await DataApi.post("auth/Login", body);
+  async AuthApi([body, path]) {
+    const data = await DataApi.post(`auth/${path}`, body);
     return data?.data;
   },
 };
@@ -20,12 +16,12 @@ const authApi = {
 // Create a custom hook
 function useAuth() {
   const [auth, setAuth] = useAuthState();
-  const [signinmutate] = useMutation(authApi.signinApi);
-  const [signupmutate] = useMutation(authApi.signupApi);
+  const [signinmutate] = useMutation(authApi.AuthApi);
+  const [signupmutate] = useMutation(authApi.AuthApi);
 
   const signin = async (body) => {
     try {
-      const data = await signinmutate(body);
+      const data = await signinmutate([body, 'signin']);
       if (data?.isSuccess) {
         setAuth(data);
       }
@@ -36,7 +32,7 @@ function useAuth() {
 
   const signup = async (body) => {
     try {
-      const data = await signupmutate(body);
+      const data = await signupmutate([body, 'signup']);
       if (data?.isSuccess) {
         setAuth(data);
       }
