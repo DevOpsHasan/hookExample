@@ -16,8 +16,8 @@ const authApi = {
 // Create a custom hook
 function useAuth() {
   const [auth, setAuth] = useAuthState();
-  const [signinmutate] = useMutation(authApi.signinApi);
-  const [signupmutate] = useMutation(authApi.signupApi);
+  const [signinmutate] = useMutation(authApi.AuthApi);
+  const [signupmutate] = useMutation(authApi.AuthApi);
 
   const signin = async (body) => {
     try {
