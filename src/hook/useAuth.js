@@ -47,28 +47,10 @@ function useAuth() {
 
   const sendPasswordResetEmail = (email) => {
     setAuth(null);
-    // return firebase
-
-    //   .auth()
-
-    //   .sendPasswordResetEmail(email)
-
-    //   .then(() => {
-    //     return true;
-    //   });
   };
 
   const confirmPasswordReset = (code, password) => {
     setAuth(null);
-    // return firebase
-
-    //   .auth()
-
-    //   .confirmPasswordReset(code, password)
-
-    //   .then(() => {
-    //     return true;
-    //   });
   };
 
   return {
